@@ -45,14 +45,14 @@ body {
 }
 
 .nav-link {
-  color: green;
+  color: #000;
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .nav-link:hover {
-  color: #64ffda;
+  color: #000;
 }
 
 .nav-link::after {
@@ -62,7 +62,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: #64ffda;
+  background: #000;
   transition: width 0.3s ease;
 }
 
@@ -82,6 +82,11 @@ body {
   background: #fff;
   margin: 3px 0;
   transition: 0.3s;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
 }
 
 /* Hero Section */
