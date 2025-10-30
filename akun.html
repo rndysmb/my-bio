@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Untuk Ayang 💖</title>
+    <style>
+      :root {
+        --bg1: #ff9a9e;
+        --bg2: #fecfef;
+        --card: #ffffffee;
+        --accent: #ff6b81;
+        --glass: rgba(255, 255, 255, 0.12);
+        --soft: rgba(255, 255, 255, 0.6);
+      }
+      * {
+        box-sizing: border-box;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background: radial-gradient(
+            circle at 10% 20%,
+            #fff6f9 0%,
+            transparent 20%
+          ),
+          linear-gradient(135deg, var(--bg1), var(--bg2));
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .scene {
+        width: 100%;
+        max-width: 980px;
+        position: relative;
+        padding: 36px;
+        border-radius: 20px;
+        backdrop-filter: blur(6px);
+      }
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.75),
+          rgba(255, 255, 255, 0.66)
+        );
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        position: relative;
+        overflow: hidden;
+      }
+      header {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .avatar {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), #ffd1dc);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 28px;
+        color: #5b1b2b;
+      }
+      p.lead {
+        margin: 10px 0 18px;
+        color: #5b1b2bbb;
+      }
+
+      .love-row {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .btn {
+        padding: 10px 16px;
+        border-radius: 12px;
+        border: 0;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 8px 18px rgba(255, 107, 129, 0.18);
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid rgba(91, 27, 43, 0.08);
+        color: #5b1b2b;
+      }
+
+      .notes {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 18px;
+      }
+      .note {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 12px;
+        min-height: 140px;
+      }
+      .flowers {
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #fff0f4, #ffeef7);
+      }
+      .flowers p {
+        padding: 18px;
+        text-align: center;
+        color: #7a2634;
+      }
+
+      footer {
+        margin-top: 16px;
+        text-align: center;
+        color: #7a2634cc;
+      }
+
+      /* floating hearts */
+      .hearts {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
+      .heart {
+        position: absolute;
+        font-size: 18px;
+        opacity: 0.95;
+        transform: translateY(0);
+        animation: rise 6s linear infinite;
+      }
+      @keyframes rise {
+        0% {
+          transform: translateY(120vh) scale(0.6);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-40vh) scale(1.1);
+          opacity: 0;
+        }
+      }
+
+      /* modal */
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(11, 8, 15, 0.45);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.28s;
+      }
+      .modal.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .modal-card {
+        width: 92%;
+        max-width: 720px;
+        background: linear-gradient(180deg, #ffffff, #fff6f8);
+        padding: 26px;
+        border-radius: 16px;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+        transform: translateY(20px);
+      }
+      .close {
+        position: absolute;
+        right: 14px;
+        top: 12px;
+        border: 0;
+        background: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      /* typewriter */
+      .typewriter {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 18px;
+        color: #4a1a27;
+        min-height: 84px;
+      }
+      .sparkle {
+        display: inline-block;
+        animation: twinkle 1.6s infinite;
+      }
+      @keyframes twinkle {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* responsive */
+      @media (max-width: 800px) {
+        .notes {
+          grid-template-columns: 1fr;
+        }
+        .avatar {
+          width: 64px;
+          height: 64px;
+          font-size: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="card">
+        <header>
+          <div class="avatar">💘</div>
+          <div>
+            <h1>Hai, Ayangku 💕</h1>
+            <p class="lead">
+              Aku buat halaman ini khusus untuk kamu — buka, senyum, dan rasakan
+              kangenku lewat kata-kata kecil ini.
+            </p>
+            <div class="love-row">
+              <button class="btn btn-primary" id="openSurprise">
+                Buka Kejutan
+              </button>
+              <button class="btn btn-ghost" id="kirimCium">
+                Kirim Ciuman 😘
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main style="margin-top: 18px">
+          <div class="notes">
+            <div class="note">
+              <h3>Catatan Cinta</h3>
+              <div class="typewriter" id="typewriter"></div>
+              <small style="display: block; margin-top: 12px; color: #6b2a36cc"
+                >Tekan "Buka Kejutan" untuk pesan spesial dan kejutan hari
+                ini.</small
+              >
+            </div>
+            <div class="note flowers">
+              <p>
+                Gak ada bunga yang bisa ngalahin senyummu.<br />
+                Gak ada lagu yang bisa samain degup jantungku setiap lihat kamu.
+              </p>
+            </div>
+          </div>
+        </main>
+
+        <footer>
+          <small>Created with ❤️ by someone who misses you.</small>
+        </footer>
+      </div>
+    </div>
+
+    <!-- floating hearts layer -->
+    <div class="hearts" id="hearts"></div>
+
+    <!-- modal surprise -->
+    <div class="modal" id="modal">
+      <div class="modal-card">
+        <button class="close" id="closeModal">✕</button>
+        <h2>Untuk Ayangku</h2>
+        <p style="margin-top: 8px; color: #5b1b2b">
+          Aku cuma mau bilang: terima kasih sudah ada. Kamu pelangi di
+          hari-hariku. Semoga hari ini kamu ketemu hal kecil yang bikin bahagia.
+        </p>
+        <div
+          style="
+            margin-top: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+          "
+        >
+          <div style="flex: 1">
+            <p style="margin: 0"><strong>Pilih kejutan:</strong></p>
+            <select
+              id="surpriseSelect"
+              style="
+                width: 100%;
+                padding: 8px;
+                border-radius: 8px;
+                margin-top: 8px;
+                border: 1px solid #ffd6e0;
+              "
+            >
+              <option value="message">Pesan Romantis</option>
+              <option value="quote">Quote Cinta</option>
+              <option value="image">Foto Kenangan (ganti sendiri)</option>
+            </select>
+          </div>
+          <div style="width: 140px; text-align: right">
+            <button class="btn btn-primary" id="showBtn">Tampilkan</button>
+          </div>
+        </div>
+        <div
+          id="surpriseArea"
+          style="
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #fff, #fff8fb);
+            min-height: 80px;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <script>
+      // typewriter text
+      const lines = [
+        "Setiap kali aku mikirin kamu, senyummu jadi alasan aku bersyukur.",
+        "Kamu itu rumah yang selalu pengen ku pulang—meskipun lagi di luar hujan badai.",
+        "Makasih udah sabar sama semua kekonyolanku. Kamu luar biasa.",
+      ];
+      const tw = document.getElementById("typewriter");
+      let li = 0,
+        ch = 0,
+        forward = true;
+      function typeLoop() {
+        const text = lines[li];
+        if (forward) {
+          ch++;
+          tw.textContent = text.slice(0, ch);
+          if (ch === text.length) {
+            forward = false;
+            setTimeout(typeLoop, 1800);
+            return;
+          }
+        } else {
+          ch--;
+          tw.textContent = text.slice(0, ch);
+          if (ch === 0) {
+            forward = true;
+            li = (li + 1) % lines.length;
+          }
+        }
+        setTimeout(typeLoop, 80);
+      }
+      typeLoop();
+
+      // floating hearts generator
+      const hearts = document.getElementById("hearts");
+      function spawnHeart() {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.fontSize = 12 + Math.random() * 36 + "px";
+        h.style.animationDuration = 4 + Math.random() * 4 + "s";
+        h.style.transform = "translateY(120vh)";
+        h.textContent = "💖";
+        hearts.appendChild(h);
+        setTimeout(() => h.remove(), 9000);
+      }
+      // spawn some initially and periodically
+      for (let i = 0; i < 8; i++) setTimeout(spawnHeart, i * 350);
+      setInterval(spawnHeart, 900);
+
+      // modal logic
+      const modal = document.getElementById("modal");
+      document.getElementById("openSurprise").addEventListener("click", () => {
+        modal.classList.add("open");
+        // small extra heart burst
+        for (let i = 0; i < 12; i++) setTimeout(spawnHeart, i * 60);
+      });
+      document
+        .getElementById("closeModal")
+        .addEventListener("click", () => modal.classList.remove("open"));
+
+      // surprise selector
+      document.getElementById("showBtn").addEventListener("click", () => {
+        const sel = document.getElementById("surpriseSelect").value;
+        const area = document.getElementById("surpriseArea");
+        area.innerHTML = "";
+        if (sel === "message") {
+          const m = document.createElement("p");
+          m.textContent =
+            "Kejutan: Aku kangen kamu. Nanti malem kita makan bareng ya? Aku yang traktir ❤️";
+          area.appendChild(m);
+        } else if (sel === "quote") {
+          const q = document.createElement("blockquote");
+          q.style.margin = "0";
+          q.style.fontStyle = "italic";
+          q.textContent =
+            '"Cinta sejati bukan tentang berapa lama kamu kenal seseorang, tapi tentang siapa yang membuat hidupmu berarti."';
+          area.appendChild(q);
+        } else if (sel === "image") {
+          const info = document.createElement("div");
+          info.innerHTML =
+            '<p style="margin:0 0 8px 0">Ganti gambar kenanganmu di sini: <br><small>upload file lokal atau ganti src di kode &lt;img id="memImg" src=""&gt;</small></p>';
+          const img = document.createElement("img");
+          img.id = "memImg";
+          img.alt = "Foto Kenangan";
+          img.style.maxWidth = "100%";
+          img.style.borderRadius = "10px";
+          img.style.boxShadow = "0 8px 30px rgba(0,0,0,0.12)";
+          area.appendChild(info);
+          area.appendChild(img);
+
+          // allow drop/upload
+          const input = document.createElement("input");
+          input.type = "file";
+          input.accept = "image/*";
+          input.style.marginTop = "8px";
+          input.addEventListener("change", (ev) => {
+            const file = ev.target.files[0];
+            if (!file) return;
+            const url = URL.createObjectURL(file);
+            img.src = url;
+          });
+          area.appendChild(input);
+        }
+      });
+
+      // 'kirim cium' button: small animation + sound via WebAudio
+      document.getElementById("kirimCium").addEventListener("click", () => {
+        // visual pulse
+        const btn = document.getElementById("kirimCium");
+        btn.animate(
+          [
+            { transform: "scale(1)" },
+            { transform: "scale(1.12)" },
+            { transform: "scale(1)" },
+          ],
+          { duration: 420 }
+        );
+        // simple beep chord
+        try {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          const o1 = ctx.createOscillator();
+          const o2 = ctx.createOscillator();
+          const g = ctx.createGain();
+          o1.type = "sine";
+          o2.type = "sine";
+          o1.frequency.value = 880;
+          o2.frequency.value = 660;
+          g.gain.value = 0.03;
+          o1.connect(g);
+          o2.connect(g);
+          g.connect(ctx.destination);
+          o1.start();
+          o2.start();
+          setTimeout(() => {
+            o1.stop();
+            o2.stop();
+            ctx.close();
+          }, 250);
+        } catch (e) {
+          /* ignore audio errors on some browsers */
+        }
+        // extra heart
+        for (let i = 0; i < 6; i++) setTimeout(spawnHeart, i * 80);
+      });
+    </script>
+  </body>
+</html>

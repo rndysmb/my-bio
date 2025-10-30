@@ -79,7 +79,7 @@ body {
 .nav-toggle span {
   width: 25px;
   height: 3px;
-  background: #fff;
+  background: #000;
   margin: 3px 0;
   transition: 0.3s;
 }
